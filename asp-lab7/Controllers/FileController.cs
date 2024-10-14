@@ -17,11 +17,9 @@ public class FileController : Controller
             StringBuilder sb = new StringBuilder();
             sb.Append($"First Name: {firstName}\n");
             sb.Append($"Second Name: {secondName}");
-            
             byte[] bytes = Encoding.UTF8.GetBytes(sb.ToString());
-            FileContentResult result = new FileContentResult(bytes, contentType: @"text/plain");
-            result.FileDownloadName = $"{fileName}.txt";
-            return result;
+            
+            return File(bytes, contentType: "text/plain", $"{fileName}.txt");
         }
     }
 }
